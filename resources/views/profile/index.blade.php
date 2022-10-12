@@ -7,14 +7,18 @@
             <img src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/ikqra03zdnggljdu5vv0" class="rounded-circle" style="height: 35%">
         </div>
         <div class="col-9 pt-5">
-            <div><h1>{{ $user->username }}</h1></div>
+            <div class="d-flex justify-content-between align-items-baseline">
+                <h1>{{ $user->username }}</h1>
+                <a href="#">Add a new post</a>
+            </div>
             <div class="d-flex">
                 <div class="pe-4"><strong>153</strong> posts</div>
                 <div class="pe-4"><strong>20k</strong> followers</div>
                 <div class="pe-4"><strong>212</strong> following</div>
             </div>
-            <div class="mt-2"><strong>freecodecamp.org</strong></div>
-            <div class=""><p>teaching how to learn to code</p></div>
+            <div class="mt-2"><strong>{{ $user->profile->title }}</strong></div>
+            <div class=""><p>{{ $user->profile->description }}</p></div>
+            <div class=""><a href="#">{{ $user->profile->url }}</a></div>
         </div>
     </div>
     <div class="row" style="margin-top: -280px">
