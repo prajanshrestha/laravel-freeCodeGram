@@ -9,10 +9,17 @@
         <div class="col-9 pt-5">
             <div class="d-flex justify-content-between align-items-baseline">
                 <h1>{{ $user->username }}</h1>
-                <a href="#">Add a new post</a>
+                @can("update", $user->profile)
+                    <a href="/post/create">Add a new post</a>
+                @endcan
             </div>
+
+            @can("update", $user->profile)
+                <a href="/profile/{{ $user->id }}/edit">Edit Post</a>
+            @endcan
+
             <div class="d-flex">
-                <div class="pe-4"><strong>153</strong> posts</div>
+                <div class="pe-4"><strong>{{ $user->posts->count() }}</strong> posts</div>
                 <div class="pe-4"><strong>20k</strong> followers</div>
                 <div class="pe-4"><strong>212</strong> following</div>
             </div>
@@ -22,15 +29,13 @@
         </div>
     </div>
     <div class="row" style="margin-top: -280px">
-        <div class="col-4">
-            <img src="https://mobiletraininginkathmandunepal.com/wp-content/uploads/2020/05/MacBook-Repair-Centers-in-Kathmandu-810x540.jpg" class="w-100">
-        </div>
-        <div class="col-4">
-            <img src="https://photos5.appleinsider.com/gallery/40575-78549-13-inch-MacBook-Air-apps-xl.jpg" class="w-100">
-        </div>
-        <div class="col-4">
-            <img src="https://lirp.cdn-website.com/md/unsplash/dms3rep/multi/opt/photo-1515248137880-45e105b710e0-640w.jpg" class="w-100">
-        </div>
+        @foreach ($user->posts as $post)
+            <div class="col-4 pb-4">
+                <a href="/post/{{ $post->id }}">
+                    <img src="/storage/{{ $post->image }}" class="w-100">
+                </a>
+            </div>
+        @endforeach
     </div>
 </div>
 @endsection
