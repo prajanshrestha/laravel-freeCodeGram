@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-3 pt-5">
-            <img src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/ikqra03zdnggljdu5vv0" class="rounded-circle" style="height: 35%">
+            <img src="/storage/{{ $user->profile->image }}" class="rounded-circle w-100">
         </div>
         <div class="col-9 pt-5">
             <div class="d-flex justify-content-between align-items-baseline">
@@ -28,7 +28,7 @@
             <div class=""><a href="#">{{ $user->profile->url }}</a></div>
         </div>
     </div>
-    <div class="row" style="margin-top: -280px">
+    <div class="row" style="margin-top: 30px;">
         @foreach ($user->posts as $post)
             <div class="col-4 pb-4">
                 <a href="/post/{{ $post->id }}">
